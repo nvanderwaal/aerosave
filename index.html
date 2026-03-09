@@ -21,15 +21,17 @@
     />
 
     <style>
-      /* Subtle animated gradient for hero background */
+      /* Hero background: ocean image with semi-transparent blue gradient overlay */
       .hero-gradient {
-        background: linear-gradient(
-          135deg,
-          #0369a1 0%,
-          #0ea5e9 40%,
-          #38bdf8 70%,
-          #7dd3fc 100%
-        );
+        background:
+          linear-gradient(
+            135deg,
+            rgba(3, 105, 161, 0.78) 0%,
+            rgba(14, 165, 233, 0.72) 40%,
+            rgba(56, 189, 248, 0.68) 70%,
+            rgba(125, 211, 252, 0.65) 100%
+          ),
+          url('images/hero-bg.jpg') center / cover no-repeat;
       }
 
       /* Wave decoration at bottom of hero */
