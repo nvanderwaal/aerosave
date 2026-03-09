@@ -112,7 +112,6 @@
       m3SavedPerMonth: Math.round(m3SavedPerMonth),
       yearlySaving: Math.round(yearlySaving),
       m3SavedPerYear: Math.round(m3SavedPerYear),
-      investment: Math.round(investment),
       roiMonths: Math.round(roiMonths),
     };
   }
@@ -142,7 +141,6 @@
     setText("result-m3-saved-year", formatNumber(result.m3SavedPerYear) + " m³");
     setText("result-monthly-saving", "€\u00a0" + formatNumber(result.monthlySaving));
     setText("result-yearly-saving", "€\u00a0" + formatNumber(result.yearlySaving));
-    setText("result-investment", "€\u00a0" + formatNumber(result.investment));
     setText("result-roi-monthly-saving", "€\u00a0" + formatNumber(result.monthlySaving));
     setText("result-roi-months", (result.roiMonths === Infinity || isNaN(result.roiMonths)) ? "—" : formatNumber(result.roiMonths) + " months");
   }
