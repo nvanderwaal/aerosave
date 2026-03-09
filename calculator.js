@@ -13,7 +13,8 @@
   var BEDS_PER_ROOM = 2; // Industry standard: assumes 2 beds per double-occupancy room
   var DAYS_PER_MONTH = 30;
   var MONTHS_PER_QUAD = 4; // quadrimester = 4 months
-  var SAVING_PERCENTAGE = 0.20; // 20% reduction with AeroSave aerators
+  var SAVING_PERCENTAGE = 0.20; // 20% reduction with AeroSave aerators (can be up to 60%)
+  var ROI_COST_PER_ROOM = 130; // Investment cost per room in € (aerator installation)
 
   // Water tariff tiers per quadrimester (rates excl. 13% VAT)
   var WATER_TIERS = [
@@ -98,6 +99,10 @@
     var yearlySaving = monthlySaving * 12;
     var m3SavedPerYear = m3SavedPerMonth * 12;
 
+    // ROI: investment based on €130 per room
+    var investment = rooms * ROI_COST_PER_ROOM;
+    var roiMonths = (monthlySaving > 0 && investment > 0) ? investment / monthlySaving : Infinity;
+
     return {
       m3PerMonth: Math.round(m3PerMonth),
       currentMonthly: Math.round(currentMonthly),
@@ -107,6 +112,8 @@
       m3SavedPerMonth: Math.round(m3SavedPerMonth),
       yearlySaving: Math.round(yearlySaving),
       m3SavedPerYear: Math.round(m3SavedPerYear),
+      investment: Math.round(investment),
+      roiMonths: Math.round(roiMonths),
     };
   }
 
@@ -135,6 +142,9 @@
     setText("result-m3-saved-year", formatNumber(result.m3SavedPerYear) + " m³");
     setText("result-monthly-saving", "€\u00a0" + formatNumber(result.monthlySaving));
     setText("result-yearly-saving", "€\u00a0" + formatNumber(result.yearlySaving));
+    setText("result-investment", "€\u00a0" + formatNumber(result.investment));
+    setText("result-roi-monthly-saving", "€\u00a0" + formatNumber(result.monthlySaving));
+    setText("result-roi-months", (result.roiMonths === Infinity || isNaN(result.roiMonths)) ? "—" : formatNumber(result.roiMonths) + " months");
   }
 
   document.addEventListener("DOMContentLoaded", function () {
