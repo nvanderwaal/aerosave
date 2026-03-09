@@ -516,7 +516,7 @@
               <h3 class="text-center text-sky-200 text-sm font-semibold uppercase tracking-widest mb-6">
                 Your Savings with AeroSave
               </h3>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+              <div class="grid grid-cols-2 gap-4 text-center">
 
                 <!-- m³ saved / year -->
                 <div class="bg-white/10 rounded-xl p-5">
@@ -548,6 +548,16 @@
                   <p class="text-sky-200 text-xs mt-1 font-medium">Saved / year</p>
                 </div>
 
+                <!-- Return of Investment -->
+                <div class="bg-white/10 rounded-xl p-5">
+                  <!-- Heroicons: clock outline -->
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 mx-auto mb-2 text-white" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p id="result-roi-months" class="text-2xl md:text-3xl font-extrabold text-white" aria-label="Return of investment in months">—</p>
+                  <p class="text-sky-200 text-xs mt-1 font-medium">Return of Investment</p>
+                </div>
+
               </div>
               <p class="text-sky-200 text-xs text-center mt-6">
                 * Based on official Cretan water &amp; sewage tariffs (incl. VAT). Assumes 2 beds/room and 30 days/month.
@@ -555,38 +565,6 @@
               </p>
             </div>
 
-            <!-- ROI panel -->
-            <div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
-              <h3 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-5 text-center">
-                Return on Investment
-              </h3>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
-
-                <!-- Monthly saving -->
-                <div class="bg-white rounded-xl p-5 border border-slate-200">
-                  <!-- Heroicons: arrow-trending-up outline -->
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 mx-auto mb-2 text-sky-500" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                  </svg>
-                  <p id="result-roi-monthly-saving" class="text-2xl md:text-3xl font-extrabold text-sky-700" aria-label="Monthly water bill saving">—</p>
-                  <p class="text-slate-400 text-xs mt-1 font-medium">Monthly saving</p>
-                </div>
-
-                <!-- Payback period -->
-                <div class="bg-white rounded-xl p-5 border border-slate-200">
-                  <!-- Heroicons: clock outline -->
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 mx-auto mb-2 text-emerald-500" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <p id="result-roi-months" class="text-2xl md:text-3xl font-extrabold text-emerald-600" aria-label="Payback period in months">—</p>
-                  <p class="text-slate-400 text-xs mt-1 font-medium">Payback period</p>
-                </div>
-
-              </div>
-              <p class="text-slate-400 text-xs text-center mt-4">
-                * Payback period uses the conservative 20% baseline saving — actual payback will be shorter if higher savings are achieved.
-              </p>
-            </div>
 
           </div>
         </div>
