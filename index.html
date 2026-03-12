@@ -34,6 +34,16 @@
           url('images/hero-bg.jpg') center / cover no-repeat;
       }
 
+      .blue-gradient {
+        background: linear-gradient(
+          135deg,
+          #0369a1 0%,
+          #0ea5e9 40%,
+          #38bdf8 70%,
+          #7dd3fc 100%
+        );
+      }
+
       /* Wave decoration at bottom of hero */
       .wave-divider {
         position: absolute;
@@ -47,6 +57,34 @@
       /* Smooth transition for results panel */
       .results-transition {
         transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+
+      /* Rotating hero headline */
+      .hero-rotator {
+        display: block;
+        position: relative;
+        height: 3.75em;
+        overflow: hidden;
+      }
+
+      .hero-rotator-track {
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .hero-rotator-track.no-transition {
+        transition: none !important;
+      }
+
+      .hero-rotator-track span {
+        display: block;
+        height: 1.25em;
+        color: white;
+        transition: color 0.5s ease;
+      }
+
+      .hero-rotator-track span.highlight {
+        color: #bae6fd;
       }
 
       /* Number highlight pulse on update */
@@ -124,9 +162,12 @@
         </span>
 
         <!-- Headline -->
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
-          Save Water.<br />Save Energy.<br />
-          <span class="text-sky-200">Save Money.</span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 hero-rotator">
+          <span class="hero-rotator-track">
+            <span>Save Water.</span>
+            <span>Save Energy.</span>
+            <span class="highlight">Save Money.</span>
+          </span>
         </h1>
 
         <!-- Subheadline -->
@@ -312,7 +353,7 @@
         <div class="flex flex-col gap-6">
           <!-- Stats card -->
           <div
-            class="hero-gradient rounded-2xl p-8 text-white shadow-lg"
+            class="blue-gradient rounded-2xl p-8 text-white shadow-lg"
           >
             <p class="text-sky-200 text-sm font-semibold uppercase tracking-wide mb-3">
               How it works
@@ -514,7 +555,7 @@
             </div>
 
             <!-- Savings highlight panel -->
-            <div class="hero-gradient rounded-2xl p-8 text-white">
+            <div class="blue-gradient rounded-2xl p-8 text-white">
               <h3 class="text-center text-sky-200 text-sm font-semibold uppercase tracking-widest mb-6">
                 Your Savings with AeroSave
               </h3>
@@ -574,7 +615,7 @@
     </section>
 
     <!-- ===================== CTA BANNER ===================== -->
-    <section class="hero-gradient py-20 px-6 text-center">
+    <section class="blue-gradient py-20 px-6 text-center">
       <div class="max-w-2xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
           Ready to start saving?
@@ -616,6 +657,33 @@
     <script>
       // Set current year in footer
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Rotating hero headline
+      (function () {
+        var track = document.querySelector('.hero-rotator-track');
+        if (!track) return;
+
+        setInterval(function () {
+          track.style.transform = 'translateY(-1.25em)';
+
+          setTimeout(function () {
+            track.classList.add('no-transition');
+            track.appendChild(track.firstElementChild);
+            track.style.transform = '';
+
+            // Keep highlight on the 3rd visible item
+            Array.from(track.children).forEach(function (el, i) {
+              el.classList.toggle('highlight', i === 2);
+            });
+
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                track.classList.remove('no-transition');
+              });
+            });
+          }, 500);
+        }, 3000);
+      })();
     </script>
   </body>
 </html>
